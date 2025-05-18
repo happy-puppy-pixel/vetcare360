@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petclinic.controller.ReportViewController">
+    <top>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Label text="Generate Reports" styleClass="page-title" />
+            <GridPane hgap="10.0" vgap="10.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="100.0" prefWidth="120.0" />
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="200.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+
+                <Label text="Report Type:" GridPane.rowIndex="0" />
+                <ComboBox fx:id="reportTypeComboBox" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Start Date:" GridPane.rowIndex="1" />
+                <DatePicker fx:id="startDatePicker" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="End Date:" GridPane.rowIndex="2" />
+                <DatePicker fx:id="endDatePicker" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </GridPane>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                <Button fx:id="generateButton" text="Generate Report" styleClass="primary-button" />
+                <Button fx:id="exportButton" text="" />
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <VBox spacing="10.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+            <Label text="Report Preview" styleClass="section-title" />
+
+             <TextArea fx:id="reportOutput" editable="false" prefHeight="300"/>
+
+        </VBox>
+    </center>
+</BorderPane>

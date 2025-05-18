@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.petclinic.controller.VeterinarianController"
+      spacing="10">
+
+    <!-- padding corrected via Insets -->
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Search & action buttons -->
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="Search veterinarians..." />
+        <Button text="Add Veterinarian" onAction="#showAddVetForm" />
+        <Button text="Delete Veterinarian" onAction="#deleteVeterinarian" />
+    </HBox>
+
+    <!-- Add/Edit form, initially hidden -->
+    <VBox fx:id="addVetForm" spacing="5" visible="false" managed="false" styleClass="card">
+        <HBox spacing="5">
+            <TextField fx:id="firstNameField" promptText="First Name" />
+            <TextField fx:id="lastNameField" promptText="Last Name" />
+        </HBox>
+        <HBox spacing="5">
+            <ComboBox fx:id="specializationComboBox" promptText="Specialization" />
+            <TextField fx:id="phoneField" promptText="Phone" />
+        </HBox>
+        <HBox spacing="5">
+            <TextField fx:id="emailField" promptText="Email" />
+            <TextField fx:id="scheduleField" promptText="Schedule" />
+        </HBox>
+        <CheckBox fx:id="availableCheckBox" text="Available" selected="true" />
+        <TextArea fx:id="notesArea" promptText="Notes" prefRowCount="3" wrapText="true" />
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Button fx:id="saveButton" text="Add Veterinarian" onAction="#saveVeterinarian" styleClass="button-primary"/>
+            <Button text="Cancel" onAction="#cancelEdit" />
+        </HBox>
+    </VBox>
+
+    <!-- Table of veterinarians -->
+    <TableView fx:id="veterinariansTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="120" />
+            <TableColumn fx:id="lastNameColumn" text="Last Name" prefWidth="120" />
+            <TableColumn fx:id="specializationColumn" text="Specialization" prefWidth="140" />
+            <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="110" />
+            <TableColumn fx:id="emailColumn" text="Email" prefWidth="160" />
+            <TableColumn fx:id="scheduleColumn" text="Schedule" prefWidth="120" />
+            <TableColumn fx:id="availableColumn" text="Available" prefWidth="80" />
+        </columns>
+    </TableView>
+</VBox>

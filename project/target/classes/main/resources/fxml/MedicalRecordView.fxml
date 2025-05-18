@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<VBox spacing="20.0" styleClass="content" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.petclinic.controller.MedicalRecordController">
+   <children>
+      <HBox styleClass="search-container" alignment="CENTER_LEFT" spacing="10">
+         <children>
+            <TextField fx:id="searchField" promptText="Search medical records..." styleClass="search-field" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#showAddRecordForm" styleClass="button-primary" text="Add Medical Record" />
+         </children>
+      </HBox>
+
+      <VBox fx:id="addRecordForm" styleClass="card" spacing="15">
+         <children>
+            <Label styleClass="form-title" text="Add Medical Record" />
+            <HBox spacing="15">
+               <children>
+                  <VBox styleClass="form-field" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="field-label" text="Pet *" />
+                        <ComboBox fx:id="petComboBox" maxWidth="1.7976931348623157E308" />
+                     </children>
+                  </VBox>
+
+                  <VBox styleClass="form-field" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="field-label" text="Owner" />
+                        <TextField fx:id="ownerField" editable="false" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <HBox spacing="15">
+               <children>
+                  <VBox styleClass="form-field" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="field-label" text="Date *" />
+                        <DatePicker fx:id="datePicker" maxWidth="1.7976931348623157E308" />
+                     </children>
+                  </VBox>
+
+                  <VBox styleClass="form-field" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="field-label" text="Type *" />
+                        <ComboBox fx:id="typeComboBox" maxWidth="1.7976931348623157E308" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <VBox styleClass="form-field">
+               <children>
+                  <Label styleClass="field-label" text="Description *" />
+                  <TextArea fx:id="descriptionArea" prefHeight="80.0" wrapText="true" />
+               </children>
+            </VBox>
+
+            <VBox styleClass="form-field">
+               <children>
+                  <Label styleClass="field-label" text="Treatment" />
+                  <TextArea fx:id="treatmentArea" prefHeight="80.0" wrapText="true" />
+               </children>
+            </VBox>
+
+            <VBox styleClass="form-field">
+               <children>
+                  <Label styleClass="field-label" text="Notes" />
+                  <TextArea fx:id="notesArea" prefHeight="80.0" wrapText="true" />
+               </children>
+            </VBox>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+               <children>
+                  <Button fx:id="cancelButton" onAction="#cancelEdit" text="Cancel" />
+                  <Button fx:id="saveButton" onAction="#saveMedicalRecord" styleClass="button-primary" text="Add Record" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+
+      <VBox styleClass="card" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+               <children>
+                  <Label styleClass="card-title" text="Medical Records" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button onAction="#deleteMedicalRecord" styleClass="button-danger" text="Delete" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="recordsTable" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="dateTimeColumn" prefWidth="150.0" text="Date &amp; Time" />
+                  <TableColumn fx:id="petNameColumn" prefWidth="120.0" text="Pet" />
+                  <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="200.0" text="Description" />
+                  <TableColumn fx:id="treatmentColumn" prefWidth="200.0" text="Treatment" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>
